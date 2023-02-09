@@ -4,5 +4,6 @@ const onClose = () => {
     tg.close()
 }
 
-let username = tg.initDataUnsafe?.user?.username;
-document.getElementById('hello').innerHTML += username;
+document.getElementById('hello').innerHTML += tg.initDataUnsafe?.user?.username;
+
+document.getElementById('tg_uid').value = tg.initDataUnsafe?.user?.id;

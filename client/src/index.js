@@ -1,41 +1,31 @@
-const path = require('path');
 const https = require('https');
-const httpsLocalhost = require("https-localhost")()
+const httpsLocalhost = require("https-localhost")();
+
+const bodyParser = require('body-parser')
+
+const Database = require('./database');
 const app = require('express')();
 
+const router = require('./routes');
 
-const PORT = 3000;
+require('dotenv')
+    .config();
 
-app.get('/', function(req, res) {
-    res.status(200).sendFile(path.join(__dirname, '..', 'public', 'index.html'));
-});
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-app.get('/form', function(req, res) {
-    res.status(200).sendFile(path.join(__dirname, '..', 'public', 'form.html'));
-});
-
-app.get('/script.js', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public', 'script.js'));
-});
-
-app.get('/database.js', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public', 'database.js'));
-});
-
-app.get('/stylesheets/style.css', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public', 'stylesheets', 'style.css'));
-});
-
-app.get('/stylesheets/form.css', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public', 'stylesheets', 'form.css'));
-});
+app.use(router);
   
 const start = async () => {
     const certs = await httpsLocalhost.getCerts()
     const server = https.createServer(certs, app);
-    server.listen(PORT, function() {
-        console.log('Server started on port ' + PORT);
+    server.listen(process.env.PORT, function() {
+        console.log('Server started on port ' + process.env.PORT);
     });
+
+    const database = new Database();
+    await database.authenticate();
 }
 
-start();
+start()
+    .then();
