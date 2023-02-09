@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheets/form.css">
+    <script src = "https://telegram.org/js/telegram-web-app.js"></script>
+    <title>DigiShop Form</title>
+</head>
+<body>
+    <span id = "hello">Здравствуй </span> <span>, заполни форму ниже : </span>
+
+    <form>
+        <label for="fname">Имя:</label><br>
+        <input type="text" id="fname" name="fname"><br>
+        <label for="lname">Фамилия:</label><br>
+        <input type="text" id="lname" name="lname"><br>
+        <label for="fname">Улица:</label><br>
+        <input type="text" id="street" name="street"><br>
+        <label for="lname">Почтовый индекс:</label><br>
+        <input type="text" id="postCode" name="postCode">
+    </form>
+    <br><button onclick={onConfirm()}>Отправить Форму</button>
+    <br><button onclick={onClose()}>Закрыть</button>
+    <script src="script.js" type="text/javascript"></script>
+    <script src="database.js" type="text/javascript"></script>
+</body>
+</html>

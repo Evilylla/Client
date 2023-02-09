@@ -22,7 +22,7 @@ server.listen(process.env.PORT, async () => {
                 await bot.sendMessage(chatId, 'Привет, ниже появится кнопка, ты должен заполнить форму. 🤖', {
                     reply_markup: {
                         inline_keyboard: [
-                            [{ text: 'Заполнить форму.', web_app: { url: config.webAppUrl } }]
+                            [{ text: 'Заполнить форму.', web_app: { url: config.webAppUrl + "/form"} }]
                         ]
                     }
                 });
