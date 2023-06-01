@@ -10,6 +10,11 @@ router.get('/', function(req, res) {
     res.status(200).sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });
 
+
+router.get('/', function(req, res) {
+    res.status(200).sendFile(path.join(__dirname, '..', 'img', 'steam.jpg'));
+});
+
 router.get('/form', function(req, res) {
     res.status(200).sendFile(path.join(__dirname, '..', 'public', 'form.html'));
 });

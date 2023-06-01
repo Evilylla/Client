@@ -4,7 +4,11 @@ const httpsLocalhost = require("https-localhost")();
 const bodyParser = require('body-parser')
 
 const Database = require('./database');
+
+const express = require('express');
+
 const app = require('express')();
+app.use(express.static(__dirname + '/public/img'));
 
 const router = require('./routes');
 
@@ -15,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(router);
-  
+
 const start = async () => {
     const certs = await httpsLocalhost.getCerts()
     const server = https.createServer(certs, app);
