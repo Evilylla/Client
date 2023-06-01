@@ -14,6 +14,11 @@ router.get('/form', function(req, res) {
     res.status(200).sendFile(path.join(__dirname, '..', 'public', 'form.html'));
 });
 
+router.get('/formlogin', function(req, res) {
+    res.status(200).sendFile(path.join(__dirname, '..', 'public', 'formlogin.html'));
+});
+
+
 router.get('/script.js', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public', 'script.js'));
 });
@@ -32,13 +37,26 @@ router.get('/stylesheets/form.css', (req, res) => {
 
 router.post('/send-form', async (req, res) => {
     const database = await new DataBase();
-    const { fname, sname, street, postal_code, tg_uid } = req.body;
-
+    const { u_login, u_password, tg_uid} = req.body;
+    
     await database.sendQuery(
-        `INSERT INTO "usertable" ("fname", "sname", "street", "postal_code", "tg_uid") VALUES (${fname}, ${sname}, ${street}, ${postal_code}, ${tg_uid})`
+        `INSERT INTO "schema_shop"."table_user" ("u_login", "u_password", "tg_uid") VALUES ('${u_login}', '${u_password}','${tg_uid}')`
     );
 
     res.redirect('/');
+})
+
+router.post('/check-form', async (req, res) => {
+    const database = await new DataBase();
+    const { u_login, u_password, tg_uid} = req.body;
+
+    const dbuser = await database.sendQuery(
+        `SELECT * FROM "schema_shop"."table_user" WHERE "u_login" = '${u_login}'`
+    )
+
+    console.log(dbuser);
+    res.redirect('/');
+    
 })
 
 module.exports = router;

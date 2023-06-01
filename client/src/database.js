@@ -18,7 +18,7 @@ class Database {
 
     authenticate = async () => {
         try {
-            await this.client.query(`SELECT * FROM "usertable"`);
+            await this.client.query(`SELECT * FROM schema_shop.table_user`);
             await this.client.end;
 
             console.log('Database success connected');
@@ -29,8 +29,10 @@ class Database {
 
     }
 
-    sendQuery = async queryString => {
-        await this.client.query(queryString);
+    sendQuery = async (queryString) => {
+        let temp;
+        await this.client.query(queryString, (err,data) => temp = data);
+        return temp; 
     }
 }
 

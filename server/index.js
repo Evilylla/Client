@@ -19,10 +19,10 @@ server.listen(process.env.PORT, async () => {
             const text = message?.text;
 
             if(text === '/start') {
-                await bot.sendMessage(chatId, 'Привет, ниже появится кнопка, ты должен заполнить форму. 🤖', {
+                await bot.sendMessage(chatId, 'Привет, ниже появится кнопка, ты должен пройти регистрацию(авторизацию). 🤖', {
                     reply_markup: {
                         inline_keyboard: [
-                            [{ text: 'Заполнить форму.', web_app: { url: config.webAppUrl + "/form"} }]
+                            [{ text: 'Вход.', web_app: { url: config.webAppUrl + "/formlogin"} }]
                         ]
                     }
                 });
