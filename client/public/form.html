@@ -9,40 +9,32 @@
     <title>DigiShop Form</title>
 </head>
 <body>
-    <div class="reg">
-        <span id = "hello">Здравствуй </span><span><br><br></span>
-    </div>
-
-    <span>Заполни форму ниже: </span>
-
-    <form action="/send-form" method="POST">
+    <form action="/send-form" method="post">
+        <div class="reg" id = "usercard">
+            <span id = "hello">Здравствуй </span><br><br><span>Напишите ваш e-mail ниже: </span></span>
+        </div>
+    
         <div class="tg-id-block">
             <label for="tg_uid"></label><br>
             <input type="text" id="tg_uid" name="tg_uid"><br>
         </div>
 
-        <label for="u_login"></label><br>
-        <input type="text" id="u_login" name="u_login" placeholder="Ваш логин.."><br>
-
-        <label for="u_password"></label><br>
-        <input type="password" id="u_password" name="u_password" placeholder="Ваш пароль.."><br>
-
+        <label for="email"></label><br>
+        <input type="email" id="u_email" name="u_email" placeholder="Ваш эмейл..."><br>  
+        
         <div class="reg">
-            <br><button class = "button button1" type="submit" >Зарегистрироваться</button>
+            <br><button class = "button button1" id="btn" type="submit" >Отправить</button>
         </div>
-
-        <div class="reg">
-            Уже есть аккаунт?<a href="/formlogin"> Авторизируйтесь!</a>
-        </div>
-
-        <div class="reg">
-            <br><button class="button button2 buttonclose" onclick={onClose()}>Закрыть</button>
-        </div>
-       
     </form>
+        
+    <div class="reg">
+        <p>Это необходимо для связи с вами.</p>
+    </div>
 
-
-    
+    <div class="reg">
+        <br><button class="button button2 buttonclose" onclick={onClose()}>Закрыть</button>
+    </div>
+       
     <script src="script.js" type="text/javascript"></script>
     <script src="../src/database.js" type="text/javascript"></script>
 </body>

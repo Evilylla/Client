@@ -13,70 +13,164 @@
 <div class="container">
 
     <div class="polaroid">
-        <img src="/client/img/Steam-down-1199456.jpg" alt="5 Terre" style="width:100%">
+        <img src="/steam.jpg" alt="5 Terre" style="width:100%">
 
         <div class="containerAbout">
-            <p>Steam Random Key</p>
+            <p class="gameName">Steam Random Key</p>
 
             <div class="reg">
-                <br><button class = "button button1 steamRandomKey" type="submit">199 RUB</button>
+                <br><button class = "button button1 steamRandomKey" id="btn1" type="submit">КУПИТЬ <br> <p>199 RUB</p></button>
             </div>
         </div>
     </div>
 
     <div class="polaroid">
-        <img src="/client/img/coh2.jpg" alt="5 Terre" style="width:100%">
+        <img src="/coh2.jpg" alt="5 Terre" style="width:100%">
 
         <div class="containerAbout">
-            <p>Company of Heroes 2</p>
+            <p class="gameName">Company of Heroes 2</p>
 
             <div class="reg">
-                <br><button class = "button button1 companyOfHeroes" type="submit">349 RUB</button>
+                <br><button class = "button button1 companyOfHeroes" id="btn2" type="submit">КУПИТЬ <br> <p>349 RUB</p></button>
             </div>
         </div>
     </div>
 
     <div class="polaroid">
-        <img src="/client/img/phasmophobia.jpg" alt="5 Terre" style="width:100%">
+        <img src="/phasmophobia.jpg" alt="5 Terre" style="width:100%">
 
         <div class="containerAbout">
-            <p>Phasmophobia</p>
+            <p class="gameName">Phasmophobia</p>
 
             <div class="reg">
-                <br><button class = "button button1 phasmophobia" type="submit">249 RUB</button>
+                <br><button class = "button button1 phasmophobia" id="btn3" type="submit">КУПИТЬ <br> <p>249 RUB</p></button>
             </div>
         </div>
     </div>
 
     <div class="polaroid">
-        <img src="/client/img/terraria.jpg" alt="5 Terre" style="width:100%">
+        <img src="/terraria.jpg" alt="5 Terre" style="width:100%">
 
         <div class="containerAbout">
-            <p>Terraria</p>
+            <p class="gameName">Terraria</p>
 
             <div class="reg">
-                <br><button class = "button button1 terraria" type="submit">149 RUB</button>
+                <br> <button class = "button button1 terraria" id="btn4" type="submit" >КУПИТЬ <br> <p>149 RUB</p></button>
             </div>
         </div>
     </div>
 
     <div class="polaroid">
-        <img src="/client/img/theforest.jpg" alt="5 Terre" style="width:100%">
+        <img src="/theforest.jpg" alt="5 Terre" style="width:100%">
 
         <div class="containerAbout">
-            <p>The Forest</p>
+            <p class="gameName">The Forest</p>
 
             <div class="reg">
-                <br><button class = "button button1 theForest" type="submit">349 RUB</button>
+                <br><button class = "button button1 theForest" id="btn5" type="submit">КУПИТЬ <br> <p>349 RUB</p></button>
             </div>
         </div>
     </div>
 
 </div>
-
-    <div class="footer">
-        <button onclick={onClose()}>Закрыть</button>
-    </div>
     <script src="script.js" type="text/javascript"></script>
+
+    <script>
+        let btn1 = document.getElementById("btn1");
+
+        let amount = 0;
+        let label = "";
+    
+        let data = {
+            amount,
+            label,
+        }
+
+        btn1.addEventListener("click",function(){
+    
+        if(tg.MainButton.isVisible)
+        {
+            tg.MainButton.hide();
+        }
+        else {
+            tg.MainButton.setText("Купить Steam Random Key.");
+            tg.MainButton.show();
+
+            data.amount = 19900;
+            data.label = "Steam Random Key";
+        }
+        })
+
+        let btn2 = document.getElementById("btn2");
+
+        btn2.addEventListener("click",function(){
+    
+        if(tg.MainButton.isVisible)
+        {
+            tg.MainButton.hide();
+        }
+        else {
+            tg.MainButton.setText("Купить Company Of Heroes.");
+            tg.MainButton.show();
+
+            data.amount = 34900;
+            data.label = "Company Of Heroes";
+        }
+        })
+
+        let btn3 = document.getElementById("btn3");
+
+        btn3.addEventListener("click",function(){
+    
+        if(tg.MainButton.isVisible)
+        {
+            tg.MainButton.hide();
+        }
+        else {
+            tg.MainButton.setText("Купить Phasmophobia.");
+            tg.MainButton.show();
+
+            data.amount = 24900;
+            data.label = "Phasmophobia";
+        }
+        })
+
+        let btn4 = document.getElementById("btn4");
+
+        btn4.addEventListener("click",function(){
+    
+        if(tg.MainButton.isVisible)
+        {
+            tg.MainButton.hide();
+        }
+        else {
+            tg.MainButton.setText("Купить Terraria.");
+            tg.MainButton.show();
+
+            data.amount = 14900;
+            data.label = "Terraria";
+        }
+        })
+
+        let btn5 = document.getElementById("btn5");
+
+        btn5.addEventListener("click",function(){
+    
+        if(tg.MainButton.isVisible)
+        {
+            tg.MainButton.hide();
+        }
+        else {
+            tg.MainButton.setText("Купить The Forest.");
+            tg.MainButton.show();
+
+            data.amount = 34900;
+            data.label = "The Forest";
+        }
+        })
+            Telegram.WebApp.onEvent("mainButtonClicked", function(){
+                tg.sendData(JSON.stringify(data));
+            })
+    </script>
 </body>
 </html>

@@ -1,5 +1,6 @@
 const https = require('http');
 const httpsLocalhost = require("https-localhost")();
+const path = require('path');
 
 const bodyParser = require('body-parser')
 
@@ -8,7 +9,9 @@ const Database = require('./database');
 const express = require('express');
 
 const app = require('express')();
-app.use(express.static(__dirname + '/public/img'));
+app.use(express.static(path.join(__dirname, '..', 'public', 'img')));
+app.use(express.static(path.join(__dirname, '..', 'public', 'product')));
+app.use(express.static(path.join(__dirname, '..', 'public', 'stylesheets')));
 
 const router = require('./routes');
 

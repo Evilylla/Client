@@ -22,34 +22,14 @@ body {
 .tg-id-block {
     display: none;
 }
-input[type=text] {
+input {
     width: 100%;
     padding: 12px 20px;
-    margin: 8px 0;
+    margin: 30% 0;
     box-sizing: border-box;
-    border: 3px solid #ccc;
     -webkit-transition: 0.5s;
     transition: 0.5s;
     outline: none;
-}
-
-input[type=text]:focus {
-    border: 3px solid #555;
-}
-
-input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 3px solid #ccc;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-    outline: none;
-}
-
-input[type=password]:focus {
-    border: 3px solid #555;
 }
 
 .buttonclose {
@@ -89,25 +69,4 @@ input[type=password]:focus {
 .button2:hover {
     background-color: #f44336;
     color: white;
-}
-
-/* unvisited link */
-a:link {
-    text-decoration: none;
-    color: rgb(3, 134, 3);
-}
-
-/* visited link */
-a:visited {
-    color: rgb(2, 109, 2);
-}
-
-/* mouse over link */
-a:hover {
-    color: rgb(2, 88, 2);
-}
-
-/* selected link */
-a:active {
-    color: blue;
 }
